@@ -13,6 +13,8 @@ main(int argc, char* argv[]) {
   // FixMe: add option --show to cat the notes.txt file.
   // FixMe: handle exclamation points
   // FixMe: have an option to vc/backup notes file on git.
+  // FixMe: add ability to encryt locally and in vc.
+  // FixMe: add dank C++ APIs.
 
   if(argc<2) {
     return 0;
