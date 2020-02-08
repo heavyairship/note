@@ -12,6 +12,7 @@ main(int argc, char* argv[]) {
   // FixMe: add option --help to show help info.
   // FixMe: add option --show to cat the notes.txt file.
   // FixMe: handle exclamation points
+  // FixMe: have an option to vc/backup notes file on git.
 
   if(argc<2) {
     return 0;
@@ -21,16 +22,15 @@ main(int argc, char* argv[]) {
   stringstream path;
   char const* const notepath(getenv("NOTE_PATH"));
   char const* const homepath(getenv("HOME"));
-  string pathpre;
   if(notepath) {
-    pathpre = notepath; 
+    path << notepath; 
   } else if(homepath) {
-    pathpre = homepath;
+    path << homepath;
   } else {
     cerr << "Must set env var NOTE_PATH or HOME." << endl;
     return -1;
   }
-  path << pathpre << "/notes.txt";
+  path << "/notes.txt";
 
   ofstream myfile(path.str(), ios::app);
   if(!myfile.is_open()) {
