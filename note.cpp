@@ -41,12 +41,13 @@ main(int argc, char* argv[]) {
   time_t rawtime;
   struct tm* timeinfo;
   char timebuff[80];
-
   time(&rawtime);
   timeinfo = localtime(&rawtime);
   strftime(timebuff,80,"%Y-%m-%d--%H:%M:%S",timeinfo);
+
   myfile << timebuff << " @@ " << argv[1] << "\n";
 
   myfile.close();
+
   return 0;
 }
