@@ -11,6 +11,7 @@ main(int argc, char* argv[]) {
   // FixMe: do proper argument parsing.
   // FixMe: add option --help to show help info.
   // FixMe: add option --show to cat the notes.txt file.
+  // FixMe: handle exclamation points
 
   if(argc<2) {
     return 0;
