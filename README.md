@@ -21,7 +21,7 @@ $ cat ~/notes.txt
 
 ## Installation:
 
-Run the following from a cloned repo on Linux or MacOS:
+Run the following from a cloned repo on Linux or MacOS (requires make and gcc-c++):
 
 ```
 make install
