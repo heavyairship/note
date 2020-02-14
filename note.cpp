@@ -11,24 +11,26 @@ using namespace std;
 int 
 main(int argc, char* argv[]) {
   // FixMe: have an option to vc/backup notes file on git
-  // FixMe: add ability to encryt locally and in vc.
+  // FixMe: add ability to encryt locally and in vc
   // FixMe: add dank C++ APIs
 
-  if(argc<2) {
+  // FixMe: mkomkomkonjibhuvgycftxdrzseawq
+  if(argc < 2) {
     return 0;
   }
 
   int help = 0;
   int showshort = 0;
   int showlong = 0;
+  int encrypt = 0;
   char *cvalue = NULL;
   int index;
   int c;
   opterr = 0;
 
   // Parse arguments
-  while ((c = getopt(argc, argv, "hsl")) != -1)
-    switch (c) {
+  while ((c = getopt(argc, argv, "hsle")) != -1)
+    switch(c) {
       case 'h':
         help = 1;
         break;
@@ -42,7 +44,7 @@ main(int argc, char* argv[]) {
         encrypt = 1;
         break;
       case '?':
-        if (isprint (optopt)) {
+        if(isprint(optopt)) {
           fprintf(stderr, "Unknown option `-%c'.\n", optopt);
         } else {
           fprintf(stderr, "Unknown option character `\\x%x'.\n", optopt);
@@ -58,11 +60,11 @@ main(int argc, char* argv[]) {
          << "Usage: note [-h -s -l] [message]\n"
          << "Appends a note message to $NOTE_PATH/notes.txt if set or $HOME/notes.txt by default\n"
          << "Options:\n"
-         << "\t -h  print this message\n"
-         << "\t -s  show the last 10 lines of the notes file\n"
-         << "\t -l  show the whole notes file\n"
-         << "\t -e  encrypt file\n"
-         << "\n";
+         << "\t -h\tprint this message\n"
+         << "\t -s\tshow the last 10 lines of the notes file\n"
+         << "\t -l\tshow the whole notes file\n"
+         << "\t -e\tencrypt file (not supported yet)\n"
+         << "\n";    
     return 0;
   }
 
@@ -92,7 +94,7 @@ main(int argc, char* argv[]) {
   if(showshort) {
     infile.clear();
     infile.seekg(0, ios::beg);
-    int start = numlines < 10 ? 0 : numlines - 10;
+    int start = (numlines < 10) ? 0 : (numlines-10);
     int end = numlines;
     int curr = 0;
     while(getline(infile, line)) {
@@ -113,6 +115,11 @@ main(int argc, char* argv[]) {
       cout << line << "\n";
     }
     infile.close();
+    return 0;
+  }
+
+  if(encrypt) {
+    cout << "Not supported yet!" << endl;
     return 0;
   }
 
